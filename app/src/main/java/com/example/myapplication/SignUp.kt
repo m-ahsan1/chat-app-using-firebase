@@ -30,20 +30,23 @@ class SignUp : AppCompatActivity() {
         btnSignup = findViewById(R.id.sign_up)
 
         btnSignup.setOnClickListener {
+            val name = edtName.text.toString()
             val email = edtEmail.text.toString()
             val password = edtPass.text.toString()
 
-            signUp(email, password)
+            signUp(name, email, password)
         }
     }
 
-    private fun signUp(email:String, password:String){
+    private fun signUp(name:String, email:String, password:String){
         //code for signup
 
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
+                    addUserToDatabase(name, email, mAuth.currentUser?.uid!!)
+
                     val intent = Intent (this@SignUp, MainActivity::class.java)
                     startActivity(intent)
                 } else {
@@ -51,6 +54,10 @@ class SignUp : AppCompatActivity() {
                     Toast.makeText(this@SignUp, "Error : Cannot create user.", Toast.LENGTH_SHORT).show()
                 }
             }
+
+    }
+
+    private fun addUserToDatabase(name: String, email: String, uid: String){
 
     }
 
