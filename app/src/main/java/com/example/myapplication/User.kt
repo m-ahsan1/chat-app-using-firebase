@@ -1,7 +1,9 @@
 package com.example.myapplication
 
 class User {
+    constructor(){
 
+    }
 
     constructor(name: String?, email: String?, uid: String?) {
         this.name = name

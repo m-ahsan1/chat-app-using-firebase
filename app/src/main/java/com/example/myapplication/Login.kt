@@ -52,7 +52,7 @@ class Login : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    val intent = Intent (this@Login, MainActivity::class.java)
+                    val intent = Intent(this@Login, MainActivity::class.java)
                     finish()
                     startActivity(intent)
                 } else {
